@@ -11,8 +11,13 @@ Vagrant.configure("2") do |config|
 
   config.vm.network :private_network, ip: "33.33.33.10"
 
+  config.vm.provider :virtualbox do |vb|
+    vb.customize ["modifyvm", :id, "--memory", 1024]
+  end
+
   config.ssh.max_tries = 40
   config.ssh.timeout   = 120
+
 
   config.berkshelf.enabled = true
   config.omnibus.chef_version = :latest
@@ -27,6 +32,14 @@ Vagrant.configure("2") do |config|
 
   config.vm.define :api_server do |v|
     v.vm.provision :chef_solo do |chef|
+      chef.json = {
+        berkshelf: {
+          api: {
+            install_method: :git
+          }
+        }
+      }
+
       chef.run_list = [
         "recipe[berkshelf::api_server]"
       ]

@@ -19,7 +19,6 @@
 
 include_recipe "berkshelf::_common"
 
-
 case node[:berkshelf][:api][:install_method].to_sym
 when :gem
   rbenv_gem "berkshelf-api" do
