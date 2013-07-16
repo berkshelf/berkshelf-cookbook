@@ -19,3 +19,4 @@
 
 default[:berkshelf][:version]      = "3.0.0.beta1"
 default[:berkshelf][:ruby_version] = "2.0.0-p247"
+default[:berkshelf][:home]         = "/etc/berkshelf"

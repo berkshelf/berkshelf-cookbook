@@ -19,9 +19,49 @@
 
 include_recipe "berkshelf::_common"
 
-rbenv_gem "berkshelf-api" do
-  version node[:berkshelf][:api][:version]
-  ruby_version node[:berkshelf][:ruby_version]
+
+case node[:berkshelf][:api][:install_method].to_sym
+when :gem
+  rbenv_gem "berkshelf-api" do
+    version node[:berkshelf][:api][:version]
+    ruby_version node[:berkshelf][:ruby_version]
+    notifies :restart, "runit_service[berks-api]"
+  end
+when :git
+  node.set[:berkshelf][:api][:bin_path] = "/opt/berkshelf-api/bin/berks-api"
+
+  git "/opt/berkshelf-api" do
+    repository node[:berkshelf][:api][:git_repo]
+    revision node[:berkshelf][:api][:git_revision]
+    notifies :run, "execute[berks-api-bundle-update]"
+    notifies :restart, "runit_service[berks-api]"
+  end
+
+  rbenv_gem "bundler" do
+    ruby_version node[:berkshelf][:ruby_version]
+  end
+
+  execute "berks-api-bundle-install" do
+    cwd "/opt/berkshelf-api"
+    environment "RBENV_ROOT" => "/opt/rbenv"
+    command "bundle install"
+    not_if { ::File.exist?("/opt/berkshelf-api/Gemfile.lock") }
+  end
+
+  execute "berks-api-bundle-update" do
+    cwd "/opt/berkshelf-api"
+    environment "RBENV_ROOT" => "/opt/rbenv"
+    command "bundle update"
+    action :nothing
+  end
+else
+  Chef::Application.fatal!("[berkshelf::api_server] unknown install method: #{node[:berkshelf][:api][:install_method]}")
+end
+
+directory node[:berkshelf][:api][:home]
+
+file node[:berkshelf][:api][:config_path] do
+  content JSON.generate(node[:berkshelf][:api][:config])
 end
 
 include_recipe "runit"

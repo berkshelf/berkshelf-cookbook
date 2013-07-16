@@ -21,3 +21,5 @@ include_recipe "rbenv"
 include_recipe "rbenv::ruby_build"
 
 rbenv_ruby node[:berkshelf][:ruby_version]
+
+directory node[:berkshelf][:home]
