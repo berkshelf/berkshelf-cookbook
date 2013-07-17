@@ -9,3 +9,4 @@ version          '0.1.0'
 supports 'ubuntu'
 
 depends 'rbenv', '>= 1.5.0'
+depends 'nginx', '>= 1.7.0'
