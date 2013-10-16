@@ -60,13 +60,19 @@ end
 directory node[:berkshelf][:api][:home]
 
 file node[:berkshelf][:api][:config_path] do
-  content JSON.generate(node[:berkshelf][:api][:config])
+  content JSON.generate(node[:berkshelf][:api][:config].to_hash)
 end
 
 include_recipe "runit"
 
-package "libarchive12"
-package "libarchive-dev"
+case node[:platform_family]
+when "debian"
+  package "libarchive12"
+  package "libarchive-dev"
+when "rhel"
+  package "libarchive"
+  package "libarchive-devel"
+end
 
 runit_service "berks-api" do
   default_logger true
