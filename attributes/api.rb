@@ -28,6 +28,7 @@ default[:berkshelf][:api][:git_repo]       = "https://github.com/RiotGames/berks
 default[:berkshelf][:api][:git_revision]   = "HEAD"
 default[:berkshelf][:api][:bin_path]       = "berks-api"
 default[:berkshelf][:api][:config_path]    = "#{node[:berkshelf][:api][:home]}/config.json"
+default[:berkshelf][:api][:log_min]        = 10
 default[:berkshelf][:api][:config]         = {
   home_path: node[:berkshelf][:api][:home]
 }

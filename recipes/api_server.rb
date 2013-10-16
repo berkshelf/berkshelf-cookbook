@@ -68,4 +68,7 @@ include_recipe "runit"
 package "libarchive12"
 package "libarchive-dev"
 
-runit_service "berks-api"
+runit_service "berks-api" do
+  default_logger true
+  log_min node[:berkshelf][:api][:log_min]
+end
