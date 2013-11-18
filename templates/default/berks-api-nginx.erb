@@ -3,7 +3,7 @@ upstream berks_api {
 }
 
 server {
-  listen 80;
+  listen <%= node[:berkshelf][:api][:proxy_port] %>;
   server_name <%= node[:berkshelf][:api][:host] %>;
 
   location / {
