@@ -19,7 +19,7 @@
 
 include_attribute "berkshelf::default"
 
-default[:berkshelf][:api][:version]        = "0.1.0"
+default[:berkshelf][:api][:version]        = "1.0.0"
 default[:berkshelf][:api][:port]           = 26200
 default[:berkshelf][:api][:proxy_port]     = 80
 default[:berkshelf][:api][:host]           = node[:fqdn]
@@ -29,6 +29,5 @@ default[:berkshelf][:api][:git_repo]       = "https://github.com/berkshelf/berks
 default[:berkshelf][:api][:git_revision]   = "HEAD"
 default[:berkshelf][:api][:bin_path]       = "berks-api"
 default[:berkshelf][:api][:config_path]    = "#{node[:berkshelf][:api][:home]}/config.json"
-default[:berkshelf][:api][:config]         = {
-  home_path: node[:berkshelf][:api][:home]
-}
+default[:berkshelf][:api][:log_min]        = 10
+default[:berkshelf][:api][:config][:home_path] = node[:berkshelf][:api][:home]
