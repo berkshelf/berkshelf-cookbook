@@ -60,7 +60,7 @@ end
 directory node[:berkshelf][:api][:home]
 
 file node[:berkshelf][:api][:config_path] do
-  content JSON.generate(node[:berkshelf][:api][:config])
+  content JSON.generate(node[:berkshelf][:api][:config].to_hash)
 end
 
 include_recipe "runit"
