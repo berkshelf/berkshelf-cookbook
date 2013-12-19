@@ -65,7 +65,12 @@ end
 
 include_recipe "runit"
 
-package "libarchive12"
-package "libarchive-dev"
+if platform_family?("rhel")
+  package "libarchive"
+  package "libarchive-devel"
+else
+  package "libarchive12"
+  package "libarchive-dev"
+end
 
 runit_service "berks-api"
