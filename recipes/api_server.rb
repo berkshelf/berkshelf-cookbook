@@ -69,7 +69,7 @@ if platform_family?("rhel")
   package "libarchive"
   package "libarchive-devel"
 else
-  package "libarchive12"
+  package "libarchive#{node[:platform_version].split('.')[0].chomp('0')}"
   package "libarchive-dev"
 end
 
