@@ -18,6 +18,7 @@
 #
 
 include_recipe "berkshelf::_common"
+include_recipe "gecode::default"
 
 rbenv_gem "berkshelf" do
   version node[:berkshelf][:version]
