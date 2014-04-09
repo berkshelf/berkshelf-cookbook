@@ -2,8 +2,8 @@ name             "berkshelf"
 maintainer       "Jamie Winsor"
 maintainer_email "jamie@vialstudios.com"
 license          "Apache 2.0"
-description      "Installs/Configures berkshelf"
-long_description IO.read(File.join(File.dirname(__FILE__), "README.md"))
+description      "Installs/Configures berkshelf and berkshelf-api"
+long_description "Installs/Configures berkshelf and berkshelf-api"
 version          "0.3.1"
 
 supports "ubuntu"
