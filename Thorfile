@@ -3,3 +3,4 @@
 require 'bundler'
 require 'bundler/setup'
 require 'berkshelf/thor'
+require 'berkflow/thor_tasks'

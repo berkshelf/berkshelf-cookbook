@@ -6,9 +6,9 @@
 .*.sw[a-z]
 *.un~
 /cookbooks
+pkg/
 
 # Bundler
 Gemfile.lock
 bin/*
 .bundle/*
-
