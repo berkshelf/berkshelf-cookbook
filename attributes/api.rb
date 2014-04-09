@@ -19,7 +19,7 @@
 
 include_attribute "berkshelf::default"
 
-default[:berkshelf][:api][:version]        = "0.1.0"
+default[:berkshelf][:api][:version]        = "1.1.1"
 default[:berkshelf][:api][:port]           = 26200
 default[:berkshelf][:api][:proxy_port]     = 80
 default[:berkshelf][:api][:host]           = node[:fqdn]
