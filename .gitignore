@@ -12,3 +12,4 @@ pkg/
 Gemfile.lock
 bin/*
 .bundle/*
+.ruby-version
