@@ -16,28 +16,9 @@ Vagrant.configure("2") do |config|
   config.berkshelf.enabled    = true
   config.omnibus.chef_version = :latest
 
-  config.vm.define :client do |v|
-    v.vm.provision :chef_solo do |chef|
-      chef.run_list = [
-        "recipe[berkshelf::default]"
-      ]
-    end
-  end
-
-  config.vm.define :api_server do |v|
-    v.vm.provision :chef_solo do |chef|
-      chef.json = {
-        berkshelf: {
-          api: {
-            install_method: :git
-          }
-        }
-      }
-
-      chef.run_list = [
-        "recipe[berkshelf::api_server]",
-        "recipe[berkshelf::api_proxy]"
-      ]
-    end
+  config.vm.provision :chef_solo do |chef|
+    chef.run_list = [
+      "recipe[berkshelf::default]"
+    ]
   end
 end

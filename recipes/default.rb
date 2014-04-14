@@ -17,4 +17,15 @@
 # limitations under the License.
 #
 
-include_recipe "berkshelf::client"
+include_recipe "gecode::default"
+include_recipe "rbenv"
+include_recipe "rbenv::ruby_build"
+
+rbenv_ruby node[:berkshelf][:ruby_version]
+
+directory node[:berkshelf][:home]
+
+rbenv_gem "berkshelf" do
+  version node[:berkshelf][:version]
+  ruby_version node[:berkshelf][:ruby_version]
+end

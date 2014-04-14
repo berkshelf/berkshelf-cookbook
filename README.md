@@ -1,6 +1,6 @@
 # berkshelf-cookbook
 
-Installs/Configures berkshelf and the berkshelf-api server
+Installs/Configures berkshelf
 
 ## Supported Platforms
 
@@ -28,28 +28,7 @@ Installs/Configures berkshelf and the berkshelf-api server
 
 ### berkshelf::default
 
-Delegates to `berkshelf::client`
-
-### berkshelf::client
-
 Installs the Berkshelf client on your node
-
-### berkshelf::api_server
-
-Installs and configures a Berkshelf API server on your node
-
-### berkshelf::api_proxy
-
-Installs and configures an HTTP proxy for the Berkshelf API server on your node
-
-## Contributing
-
-1. Fork the repository on Github
-2. Create a named feature branch (i.e. `add-new-recipe`)
-3. Write you change
-4. Write tests for your change (if applicable)
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request
 
 ## License and Authors
 

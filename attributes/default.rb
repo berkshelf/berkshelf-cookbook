@@ -17,6 +17,6 @@
 # limitations under the License.
 #
 
-default[:berkshelf][:version]      = "3.0.0.beta4"
+default[:berkshelf][:version]      = "3.0.0"
 default[:berkshelf][:ruby_version] = "2.0.0-p353"
 default[:berkshelf][:home]         = "/etc/berkshelf"
